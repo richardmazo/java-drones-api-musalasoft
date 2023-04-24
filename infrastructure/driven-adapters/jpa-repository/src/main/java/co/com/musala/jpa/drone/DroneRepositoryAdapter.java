@@ -20,4 +20,9 @@ implements DroneRepository {
     public List<Drone> findAllDrones() {
         return super.findAll();
     }
+
+    @Override
+    public List<Drone> findByStatus(String status) {
+        return super.toList(repository.findByState(status));
+    }
 }
