@@ -7,7 +7,6 @@ import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.function.Function;
 
 @Repository
 public class DroneRepositoryAdapter extends AdapterOperations<Drone, DroneData, Long, DroneDataRepository>
@@ -24,5 +23,10 @@ implements DroneRepository {
     @Override
     public List<Drone> findByStatus(String status) {
         return super.toList(repository.findByState(status));
+    }
+
+    @Override
+    public Drone saveDrone(Drone drone) {
+        return save(drone);
     }
 }

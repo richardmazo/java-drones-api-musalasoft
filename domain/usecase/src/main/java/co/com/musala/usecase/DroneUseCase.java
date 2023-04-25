@@ -16,4 +16,9 @@ public class DroneUseCase {
         return droneRepository.findAllDrones();
     }
 
+    public Drone saveDrone(String serialNumber, String model, Double weightLimit, Double batteryCapacity, String state){
+
+        Drone drone = new Drone(null,serialNumber, model, weightLimit, batteryCapacity, state);
+        return droneRepository.saveDrone(drone);
+    }
 }

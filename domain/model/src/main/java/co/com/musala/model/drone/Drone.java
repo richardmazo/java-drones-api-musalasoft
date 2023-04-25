@@ -15,6 +15,6 @@ public class Drone {
     private final String serialNumber;
     private final String model;
     private final Double weightLimit;
-    private final BigDecimal batteryCapacity;
+    private final Double batteryCapacity;
     private final String state;
 }
