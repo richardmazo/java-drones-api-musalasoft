@@ -34,9 +34,9 @@ public class DroneData {
     @Column(name = "WEIGHT_LIMIT")
     private Double weightLimit;
 
-    @Column(name="BATTERY_CAPACITY", precision = 5,  scale = 2)
-    private BigDecimal batteryCapacity;
+    @Column(name="BATTERY_CAPACITY")
+    private Double batteryCapacity;
 
-    @Column(name = "STATE")
+    @Column(name = "STATE", length = 10)
     private String state;
 }
