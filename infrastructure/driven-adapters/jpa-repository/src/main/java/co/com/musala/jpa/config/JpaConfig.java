@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -16,12 +17,24 @@ import java.util.Properties;
 @Configuration
 public class JpaConfig {
 
+/*
+    @Bean
+    public DataSource getDataSource(){
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("org.h2.Driver");
+        dataSource.setUrl("jdbc:h2:mem:testdb");
+        dataSource.setUsername("sa");
+        dataSource.setPassword("");
+        return dataSource;
+    }*/
+
+/*
     @Bean
     public DBSecret dbSecret(Environment env) {
         return DBSecret.builder()
-                .url(env.getProperty("spring.datasource.url"))
-                .username(env.getProperty("spring.datasource.username"))
-                .password(env.getProperty("spring.datasource.password"))
+                .url(env.getProperty("jdbc:h2:mem:testdb"))
+                .username(env.getProperty("sa"))
+                .password(env.getProperty(""))
                 .build();
     }
 
@@ -48,9 +61,10 @@ public class JpaConfig {
 
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", dialect);
-        properties.setProperty("hibernate.hbm2ddl.auto", "update"); // TODO: remove this for non auto create schema
+        //properties.setProperty("hibernate.hbm2ddl.auto", "update");
         em.setJpaProperties(properties);
 
         return em;
     }
+*/
 }
