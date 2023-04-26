@@ -1,16 +1,18 @@
 package co.com.musala.model.medication;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import co.com.musala.model.drone.Drone;
+import lombok.*;
 
 @Getter
+@Setter
 @Builder(toBuilder = true)
 @AllArgsConstructor
+@NoArgsConstructor
 public class Medication {
     private Long id;
-    private final String name;
-    private final Double weight;
-    private final String code;
-    private final String image;
+    private String name;
+    private Double weight;
+    private String code;
+    private String image;
+    private Long idDrone;
 }

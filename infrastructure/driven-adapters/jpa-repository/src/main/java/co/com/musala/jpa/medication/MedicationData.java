@@ -1,5 +1,6 @@
 package co.com.musala.jpa.medication;
 
+import co.com.musala.jpa.drone.DroneData;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,5 +28,12 @@ public class MedicationData {
 
     @Column(name = "IMAGE")
     private String image;
+
+    @Column(name="ID_DRONE")
+    private Long idDrone;
+
+    @ManyToOne
+    @JoinColumn(name = "ID_DRONE", insertable = false, updatable = false)//SERIAL_NUMBER SERIAL_DRONE
+    private DroneData droneData;
 
 }

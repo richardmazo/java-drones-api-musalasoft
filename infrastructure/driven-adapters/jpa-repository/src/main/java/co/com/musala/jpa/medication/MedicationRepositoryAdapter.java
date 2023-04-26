@@ -19,4 +19,11 @@ public class MedicationRepositoryAdapter  extends AdapterOperations<Medication, 
     public List<Medication> findAllMedications() {
         return super.toList(repository.findAll());
     }
+
+    @Override
+    public List<Medication> findByIdDrone(Long idDrone) {
+        return toList(repository.findByIdDrone(idDrone));
+    }
+
+
 }

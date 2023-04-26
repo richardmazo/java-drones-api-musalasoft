@@ -18,4 +18,9 @@ public class MedicationUseCase {
         return medicationRepository.findAllMedications();
     }
 
+    public List<Medication> getMedicationsByIdDrone(Long idDrone){
+        return medicationRepository.findByIdDrone(idDrone);
+    }
+
+
 }

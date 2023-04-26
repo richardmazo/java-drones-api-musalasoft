@@ -1,17 +1,12 @@
 package co.com.musala.jpa.drone;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
+import co.com.musala.jpa.medication.MedicationData;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.math.BigDecimal;
+import java.util.List;
 
 @Getter
 @Setter
@@ -39,4 +34,8 @@ public class DroneData {
 
     @Column(name = "STATE", length = 10)
     private String state;
+
+    @OneToMany(mappedBy = "droneData")
+    private List<MedicationData> medicationList;
+
 }

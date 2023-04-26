@@ -12,10 +12,10 @@ VALUES
   (110, 'MARM3010', 'Heavyweight', 467.0, 100.0, 'DELIVERING');
  COMMIT;
 
-INSERT INTO TBL_MEDICATION (id, name, weight, code, image)
+INSERT INTO TBL_MEDICATION (ID, NAME, WEIGHT, CODE, IMAGE, ID_DRONE)
 VALUES
-(1,'Ibuprofen', 100.7, 'MED_001', 'https://example.com/ibuprofen.jpg'),
-(2,'Acetaminophen', 50.5, 'MED_002', 'https://example.com/acetaminophen.jpg'),
-(3,'Aspirin', 0.1, 'MED_003', 'https://example.com/aspirin.jpg'),
-(4,'Codeine', 300.4, 'MED_004', 'https://example.com/codeine.jpg');
+(100,'Ibuprofen', 100.7, 'MED_001', 'https://example.com/ibuprofen.jpg',100),
+(200,'Acetaminophen', 50.5, 'MED_002', 'https://example.com/acetaminophen.jpg',101),
+(300,'Acetaminophen', 50.5, 'MED_002', 'https://example.com/acetaminophen.jpg',102),
+(400,'Codeine', 300.4, 'MED_004', 'https://example.com/codeine.jpg',100);
  COMMIT;

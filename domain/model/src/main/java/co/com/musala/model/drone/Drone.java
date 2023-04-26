@@ -1,20 +1,22 @@
 package co.com.musala.model.drone;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import co.com.musala.model.medication.Medication;
+import lombok.*;
 
-import java.math.BigDecimal;
+import java.util.List;
+
 
 @Getter
+@Setter
 @Builder(toBuilder = true)
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class Drone {
     private Long id;
-    private final String serialNumber;
-    private final String model;
-    private final Double weightLimit;
-    private final Double batteryCapacity;
-    private final String state;
+    private String serialNumber;
+    private String model;
+    private Double weightLimit;
+    private Double batteryCapacity;
+    private String state;
+    private List<Medication> medicationList;
 }
