@@ -62,13 +62,6 @@ implements DroneRepository {
         return medication;
     }
 
-
-
-    @Override
-    public List<Drone> findByStatus(String status) {
-        return super.toList(repository.findByState(status));
-    }
-
     @Override
     public Drone saveDrone(Drone drone) {
         DroneData droneData = new DroneData();

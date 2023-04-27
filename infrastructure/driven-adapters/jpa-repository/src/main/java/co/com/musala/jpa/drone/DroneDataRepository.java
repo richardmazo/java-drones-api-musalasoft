@@ -15,11 +15,5 @@ public interface DroneDataRepository extends CrudRepository<DroneData, Long>,
     @Query(value="SELECT * FROM Drone d WHERE d.Status = :state", nativeQuery = true)
     List<DroneData> findByState(@Param("state") String state);
 
-    //List<MedicationData> findMedicationsByIdDrone(Long id);
-    //List<MedicationData> findMedicationsByDroneData(DroneData droneData);
-    @Query("SELECT m FROM MedicationData m WHERE m.droneData.id = :droneId")
-    List<MedicationData> findMedicationsByIdDrone(@Param("droneId") Long droneId);
-
-
     List<DroneData> findAll();
 }

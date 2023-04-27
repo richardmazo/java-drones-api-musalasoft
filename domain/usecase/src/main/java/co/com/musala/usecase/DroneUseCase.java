@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 @RequiredArgsConstructor
 public class DroneUseCase {
@@ -15,7 +14,6 @@ public class DroneUseCase {
 
     private final DroneRepository droneRepository;
     private final MedicationUseCase medicationUseCase;
-    private final Logger logger = Logger.getLogger(DroneUseCase.class.toString());
 
     public List<Drone> getAllDrones(){
         return droneRepository.getAllDronesWithMedications();
@@ -39,6 +37,9 @@ public class DroneUseCase {
     }
 
     public Drone updateDrone(Drone drone){
+        if(drone.getMedicationList() == null || drone.getMedicationList().isEmpty()){
+            throw new IllegalArgumentException("The medications list of the drone is empty.");
+        }else{
             double totalWeight = 0.0;
             for (Medication medication : drone.getMedicationList()) {
                 totalWeight += medication.getWeight();
@@ -60,6 +61,7 @@ public class DroneUseCase {
                 Drone droneUpdate =  this.saveDrone(drone);
                 droneUpdate.setMedicationList(medicationUpdateList);
                 return droneUpdate;
+                }
             }
     }
 
@@ -76,13 +78,17 @@ public class DroneUseCase {
         List<Drone> droneAvailable = new ArrayList<>();
         for(Drone drone : droneList){
             double totalWeight = 0.0;
-            for (Medication medication : drone.getMedicationList()) {
-                totalWeight += medication.getWeight();
-            }
-            if(totalWeight<500.0 && (drone.getState().toLowerCase().equals("idle")
-                    || drone.getState().toLowerCase().equals("delivered"))
-                    || drone.getState().toLowerCase().equals("loading")){
+            if (drone.getMedicationList()==null || drone.getMedicationList().isEmpty()){
                 droneAvailable.add(drone);
+            }else {
+                for (Medication medication : drone.getMedicationList()) {
+                    totalWeight += medication.getWeight();
+                }
+                if (totalWeight < 500.0 && (drone.getState().toLowerCase().equals("idle")
+                        || drone.getState().toLowerCase().equals("delivered")
+                        || drone.getState().toLowerCase().equals("loading"))) {
+                    droneAvailable.add(drone);
+                }
             }
         }
       return droneAvailable;

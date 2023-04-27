@@ -26,11 +26,6 @@ public class MedicationRepositoryAdapter  extends AdapterOperations<Medication, 
     }
 
     @Override
-    public void deleteMedicationById(Long idMedication) {
-        repository.deleteById(idMedication);
-    }
-
-    @Override
     public Medication saveMedication(Medication medication) {
         MedicationData medicationData = new MedicationData();
         medicationData.setId(medication.getId());
@@ -41,11 +36,5 @@ public class MedicationRepositoryAdapter  extends AdapterOperations<Medication, 
         medicationData.setIdDrone(medication.getIdDrone());
         return super.toEntity(saveData(medicationData));
     }
-
-    @Override
-    public List<Medication> saveAllMedication(List<Medication> medication) {
-        return super.saveAllEntities(medication);
-    }
-
 
 }
