@@ -78,21 +78,6 @@ implements DroneRepository {
         droneData.setSerialNumber(drone.getSerialNumber());
         droneData.setWeightLimit(drone.getWeightLimit());
         droneData.setBatteryCapacity(drone.getBatteryCapacity());
-        /*if(drone.getMedicationList()!=null){
-            List<MedicationData> medicationDataList = new ArrayList<>();
-            for (Medication medication : drone.getMedicationList()){
-                MedicationData medicationData = new MedicationData();
-                medicationData.setId(medication.getId());
-                medicationData.setCode(medication.getCode());
-                medicationData.setName(medication.getName());
-                medicationData.setWeight(medication.getWeight());
-                medicationData.setImage(medication.getImage());
-                medicationData.setIdDrone(drone.getId());
-                medicationDataList.add(medicationData);
-            }
-            droneData.setMedicationList(medicationDataList);
-        }*/
-
         return super.toEntity(saveData(droneData));
     }
 }

@@ -1,5 +1,6 @@
 package co.com.musala.api.medication;
 
+import co.com.musala.api.ErrorMessage;
 import co.com.musala.model.medication.Medication;
 import co.com.musala.usecase.MedicationUseCase;
 import lombok.RequiredArgsConstructor;
@@ -18,14 +19,20 @@ public class MedicationService {
     private final MedicationUseCase medicationUseCase;
 
     @GetMapping("/getMedications")
-    public ResponseEntity<List<Medication>> getMedications(){
+    public ResponseEntity<?> getMedications(){
         List<Medication> responseList = medicationUseCase.getAllMedications();
+        if(responseList == null || responseList.isEmpty()){
+            return new ResponseEntity<>(new ErrorMessage("There are no medications"), HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(responseList, HttpStatus.OK);
     }
 
-    @GetMapping("/")
-    public ResponseEntity<List<Medication>> getMedicationsByIdDrone(@RequestParam("idDrone") Long idDrone){
+    @GetMapping("/getMedicationsByIdDrone")
+    public ResponseEntity<?> getMedicationsByIdDrone(@RequestParam("idDrone") Long idDrone){
         List<Medication> responseList = medicationUseCase.getMedicationsByIdDrone(idDrone);
+        if(responseList == null || responseList.isEmpty()){
+            return new ResponseEntity<>(new ErrorMessage("The are no medications loaded for the drone with id " + idDrone), HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(responseList, HttpStatus.OK);
     }
 
