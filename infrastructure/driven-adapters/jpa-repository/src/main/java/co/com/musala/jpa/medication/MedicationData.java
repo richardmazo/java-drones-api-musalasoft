@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.Immutable;
 
 @Getter
 @Setter
@@ -32,8 +33,8 @@ public class MedicationData {
     @Column(name="ID_DRONE")
     private Long idDrone;
 
-    @ManyToOne
-    @JoinColumn(name = "ID_DRONE", insertable = false, updatable = false)//SERIAL_NUMBER SERIAL_DRONE
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_DRONE", insertable = false, updatable = false)
     private DroneData droneData;
 
 }

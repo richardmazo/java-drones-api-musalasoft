@@ -8,4 +8,10 @@ public interface MedicationRepository {
     List<Medication> findAllMedications();
 
     List<Medication> findByIdDrone(Long idDrone);
+
+    void deleteMedicationById(Long dMedication);
+
+    Medication saveMedication(Medication medication);
+
+    List<Medication> saveAllMedication(List<Medication> medication);
 }

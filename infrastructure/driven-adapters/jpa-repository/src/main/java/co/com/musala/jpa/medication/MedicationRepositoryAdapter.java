@@ -25,5 +25,27 @@ public class MedicationRepositoryAdapter  extends AdapterOperations<Medication, 
         return toList(repository.findByIdDrone(idDrone));
     }
 
+    @Override
+    public void deleteMedicationById(Long idMedication) {
+        repository.deleteById(idMedication);
+    }
+
+    @Override
+    public Medication saveMedication(Medication medication) {
+        MedicationData medicationData = new MedicationData();
+        medicationData.setId(medication.getId());
+        medicationData.setCode(medication.getCode());
+        medicationData.setName(medication.getName());
+        medicationData.setWeight(medication.getWeight());
+        medicationData.setImage(medication.getImage());
+        medicationData.setIdDrone(medication.getIdDrone());
+        return super.toEntity(saveData(medicationData));
+    }
+
+    @Override
+    public List<Medication> saveAllMedication(List<Medication> medication) {
+        return super.saveAllEntities(medication);
+    }
+
 
 }

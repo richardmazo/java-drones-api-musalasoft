@@ -17,5 +17,6 @@ VALUES
 (100,'Ibuprofen', 100.7, 'MED_001', 'https://example.com/ibuprofen.jpg',100),
 (200,'Acetaminophen', 50.5, 'MED_002', 'https://example.com/acetaminophen.jpg',101),
 (300,'Acetaminophen', 50.5, 'MED_002', 'https://example.com/acetaminophen.jpg',102),
-(400,'Codeine', 300.4, 'MED_004', 'https://example.com/codeine.jpg',100);
+(400,'Codeine', 300.4, 'MED_004', 'https://example.com/codeine.jpg',100),
+(500,'Codeine', 300.4, 'MED_004', 'https://example.com/codeine.jpg',null);
  COMMIT;

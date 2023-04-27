@@ -5,6 +5,7 @@ import co.com.musala.model.drone.gateway.DroneRepository;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 public class DroneUseCase {
@@ -16,9 +17,13 @@ public class DroneUseCase {
         return droneRepository.getAllDronesWithMedications();
     }
 
-    public Drone saveDrone(String serialNumber, String model, Double weightLimit, Double batteryCapacity, String state){
 
-        Drone drone = new Drone(null,serialNumber, model, weightLimit, batteryCapacity, state,null);
+    public Drone saveDrone(Drone drone){
         return droneRepository.saveDrone(drone);
     }
+
+    public Drone findById(Long idDrone) {
+        return droneRepository.findById(idDrone);
+    }
+
 }

@@ -22,5 +22,19 @@ public class MedicationUseCase {
         return medicationRepository.findByIdDrone(idDrone);
     }
 
+    public Medication saveMedication(Medication medication){
+        return medicationRepository.saveMedication(medication);
+    }
+
+    public List<Medication> saveAllMedication(List<Medication> medication){
+        return medicationRepository.saveAllMedication(medication);
+    }
+
+    public void deleteMedicationById(Long idMedication){
+        medicationRepository.deleteMedicationById(idMedication);
+    }
+
+
+
 
 }

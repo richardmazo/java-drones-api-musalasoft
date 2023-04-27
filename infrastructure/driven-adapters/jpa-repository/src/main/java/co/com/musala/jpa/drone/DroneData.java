@@ -35,7 +35,7 @@ public class DroneData {
     @Column(name = "STATE", length = 10)
     private String state;
 
-    @OneToMany(mappedBy = "droneData")
+    @OneToMany(mappedBy = "droneData", cascade = CascadeType.ALL)
     private List<MedicationData> medicationList;
 
 }
