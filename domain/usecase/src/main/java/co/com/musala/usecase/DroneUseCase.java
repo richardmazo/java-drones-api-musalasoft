@@ -30,6 +30,12 @@ public class DroneUseCase {
         if (drone.getWeightLimit()>500.0){
             throw new IllegalArgumentException("The weight limit  is (500).");
         }
+        if (drone.getBatteryCapacity()>100.0){
+            throw new IllegalArgumentException("The battery was incorrectly parameterized, it must be between 0.0 and 100.0.");
+        }
+        if (drone.getBatteryCapacity()<25.0 && drone.getState().toLowerCase().equals("loading")){
+            throw new IllegalArgumentException("The battery level is below 25%, this drone cannot be in LOADING state.");
+        }
         if (!drone.getState().toLowerCase().equals("idle") && !drone.getState().toLowerCase().equals("loading") && !drone.getState().toLowerCase().equals("loaded") && !drone.getState().toLowerCase().equals("delivering") && !drone.getState().toLowerCase().equals("delivered") && !drone.getState().toLowerCase().equals("returning")){
             throw new IllegalArgumentException("The state required is IDLE, LOADING, LOADED, DELIVERING, DELIVERED, RETURNING.");
         }
@@ -52,7 +58,7 @@ public class DroneUseCase {
                     Medication medicationUpdate = medicationUseCase.saveMedication(medication);
                     medicationUpdateList.add(medicationUpdate);
                 }
-                if(totalWeight==500){
+                if(totalWeight==drone.getWeightLimit()){
                     drone.setState("LOADED");
                 }else{
                     drone.setState("LOADING");
@@ -66,10 +72,6 @@ public class DroneUseCase {
     }
 
     public Drone findById(Long idDrone) {
-        return droneRepository.findById(idDrone);
-    }
-
-    public Drone checkBatteryLevel(Long idDrone) {
         return droneRepository.findById(idDrone);
     }
 

@@ -1,6 +1,5 @@
 package co.com.musala.jpa.helper;
 
-import co.com.musala.jpa.drone.DroneData;
 import org.reactivecommons.utils.ObjectMapper;
 import org.springframework.data.domain.Example;
 import org.springframework.data.repository.CrudRepository;

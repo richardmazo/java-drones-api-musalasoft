@@ -43,9 +43,14 @@ This module is the most external of the architecture, it is in charge of assembl
 
 # Steps to run the project:
 
-1. Clone the project: 
+1. Clone the project: https://github.com/richardmazo/drones
+2. Open the project with Intellij
+3. The MainApplication of the application is located in the folder: applications/app-service/src/main/java/cp.com.musala/MainApplication.java
+4. Before running the application make sure to configure and install Java 17, Gradle 7.6.1 and postman
 
 # API service:
+
+The exposed port of the localhost is 8082
 
 1. Register drones: http://localhost:8082/api/createDrone
    ![img_1.png](img_1.png)

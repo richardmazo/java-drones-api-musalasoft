@@ -32,6 +32,3 @@ management:
     health:
       probes:
         enabled: true
-logging:
-  level:
-    sql: debug

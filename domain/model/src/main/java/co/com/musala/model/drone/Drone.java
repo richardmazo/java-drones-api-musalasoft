@@ -1,7 +1,11 @@
 package co.com.musala.model.drone;
 
 import co.com.musala.model.medication.Medication;
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.Builder;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 

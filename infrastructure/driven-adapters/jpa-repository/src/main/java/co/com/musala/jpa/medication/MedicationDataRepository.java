@@ -1,6 +1,5 @@
 package co.com.musala.jpa.medication;
 
-import co.com.musala.model.medication.Medication;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 

@@ -1,6 +1,5 @@
 package co.com.musala.jpa.drone;
 
-import co.com.musala.model.drone.Drone;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
