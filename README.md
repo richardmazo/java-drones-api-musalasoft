@@ -1,47 +1,115 @@
-# Proyecto Base Implementando Clean Architecture
+# Necessary installation:
 
-## Antes de Iniciar
+1. Java 17: https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
+2. It is recommended to run the project in Intellij community: https://www.jetbrains.com/idea/download/#section=windows
+3. Download Gradle version 7.6.1 and put it in the environment variables: https://gradle.org/releases/
+4. Install postman
 
-Empezaremos por explicar los diferentes componentes del proyectos y partiremos de los componentes externos, continuando con los componentes core de negocio (dominio) y por último el inicio y configuración de la aplicación.
+# Base Project Implementing Clean Architecture
 
-Lee el artículo [Clean Architecture — Aislando los detalles](https://medium.com/bancolombia-tech/clean-architecture-aislando-los-detalles-4f9530f35d7a)
+## Before you start
 
-# Arquitectura
+We will start by explaining the different components of the project and we will start with the external components, continuing with the core business components (domain) and finally the start and configuration of the application.
+
+# Architecture
 
 ![Clean Architecture](https://miro.medium.com/max/1400/1*ZdlHz8B0-qu9Y-QO3AXR_w.png)
 
 ## Domain
 
-Es el módulo más interno de la arquitectura, pertenece a la capa del dominio y encapsula la lógica y reglas del negocio mediante modelos y entidades del dominio.
+It is the most internal module of the architecture, it belongs to the domain layer and encapsulates the business logic and rules through models and domain entities.
 
 ## Usecases
 
-Este módulo gradle perteneciente a la capa del dominio, implementa los casos de uso del sistema, define lógica de aplicación y reacciona a las invocaciones desde el módulo de entry points, orquestando los flujos hacia el módulo de entities.
+This module, belonging to the domain layer, implements the use cases of the system, defines application logic and reacts to the invocations from the entry points module, orchestrating the flows towards the entities module.
 
 ## Infrastructure
 
-### Helpers
-
-En el apartado de helpers tendremos utilidades generales para los Driven Adapters y Entry Points.
-
-Estas utilidades no están arraigadas a objetos concretos, se realiza el uso de generics para modelar comportamientos
-genéricos de los diferentes objetos de persistencia que puedan existir, este tipo de implementaciones se realizan
-basadas en el patrón de diseño [Unit of Work y Repository](https://medium.com/@krzychukosobudzki/repository-design-pattern-bc490b256006)
-
-Estas clases no puede existir solas y debe heredarse su compartimiento en los **Driven Adapters**
-
 ### Driven Adapters
 
-Los driven adapter representan implementaciones externas a nuestro sistema, como lo son conexiones a servicios rest,
-soap, bases de datos, lectura de archivos planos, y en concreto cualquier origen y fuente de datos con la que debamos
-interactuar.
+The driven adapters represent external implementations to our system, such as connections to rest services,
+soap, databases, reading flat files, and specifically any origin and source of data with which we must
+interact.
 
 ### Entry Points
 
-Los entry points representan los puntos de entrada de la aplicación o el inicio de los flujos de negocio.
+Entry points represent the entry points of the application or the start of business flows.
 
 ## Application
 
-Este módulo es el más externo de la arquitectura, es el encargado de ensamblar los distintos módulos, resolver las dependencias y crear los beans de los casos de use (UseCases) de forma automática, inyectando en éstos instancias concretas de las dependencias declaradas. Además inicia la aplicación (es el único módulo del proyecto donde encontraremos la función “public static void main(String[] args)”.
+This module is the most external of the architecture, it is in charge of assembling the different modules, resolving the dependencies and creating the beans of the use cases (UseCases) automatically, injecting concrete instances of the declared dependencies into them. It also starts the application (it is the only module in the project where we will find the function [public static void main(String[] args)].
 
-**Los beans de los casos de uso se disponibilizan automaticamente gracias a un '@ComponentScan' ubicado en esta capa.**
+**The use case beans are made available automatically thanks to a '@ComponentScan' placed in this layer.**
+
+# Steps to run the project:
+
+1. Clone the project: 
+
+# API service:
+
+1. Register drones: http://localhost:8082/api/createDrone
+   ![img_1.png](img_1.png)
+   Example JSON - POST:
+```
+{
+  "serialNumber": "RLMO_234",
+  "model": "Heavyweight",
+  "weightLimit": 500.0,
+  "batteryCapacity": 100.0,
+  "state": "RETURNING"
+} 
+```
+
+2. Loading a drone with medication items: http://localhost:8082/api/updateDroneWithMedications/104
+   ![img_5.png](img_5.png)
+   Example JSON - PUT:
+```
+    {
+        "id": 104,
+        "serialNumber": "prueba2",
+        "model": "Heavyweight",
+        "weightLimit": 340.0,
+        "batteryCapacity": 100.0,
+        "state": "IDLE",
+        "medicationList": [
+        {
+            "id": 100,
+            "name": "Ibuprofen",
+            "weight": 100.7,
+            "code": "MED_001",
+            "image": "https://example.com/ibuprofen.jpg",
+            "idDrone": 104
+        },
+        {
+            "id": 500,
+            "name": "Codeine",
+            "weight": 300.4,
+            "code": "MED_004",
+            "image": "https://example.com/codeine.jpg",
+            "idDrone": 104
+        }                                 
+        ]
+    }
+```
+
+3. Check loaded medication items for a given drone: http://localhost:8082/api/getMedicationsByIdDrone?idDrone=102
+   ![img_6.png](img_6.png)
+
+4. Check available drones for loading: http://localhost:8082/api/checkDroneAvailable
+   ![img_7.png](img_7.png)
+
+5. Check drone baterry level for a given drone: http://localhost:8082/api/droneBattery?idDrone=100
+   ![img_3.png](img_3.png)
+
+# Additional services:
+
+1. Get all drones: http://localhost:8082/api/getDrones
+   ![img.png](img.png)
+
+2. Get all medications: http://localhost:8082/api/getMedications
+   ![img_2.png](img_2.png)
+
+
+
+
+
