@@ -2,14 +2,7 @@ package co.com.musala.jpa.drone;
 
 import co.com.musala.jpa.medication.MedicationData;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -43,7 +36,7 @@ public class DroneData {
     @Column(name = "STATE", length = 10)
     private String state;
 
-    @OneToMany(mappedBy = "droneData", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "droneData", cascade = CascadeType.ALL)
     private List<MedicationData> medicationList;
 
 }

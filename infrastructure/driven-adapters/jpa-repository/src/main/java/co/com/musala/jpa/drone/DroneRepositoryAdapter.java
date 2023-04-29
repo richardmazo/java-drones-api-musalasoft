@@ -6,6 +6,7 @@ import co.com.musala.model.drone.Drone;
 import co.com.musala.model.drone.gateway.DroneRepository;
 import co.com.musala.model.medication.Medication;
 import org.reactivecommons.utils.ObjectMapper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Repository;
 
 
@@ -15,6 +16,8 @@ import java.util.List;
 @Repository
 public class DroneRepositoryAdapter extends AdapterOperations<Drone, DroneData, Long, DroneDataRepository>
 implements DroneRepository {
+
+
     protected DroneRepositoryAdapter(DroneDataRepository repository, ObjectMapper mapper) {
         super(repository, mapper, d -> mapper.mapBuilder(d, Drone.DroneBuilder.class).build());
     }

@@ -12,8 +12,4 @@ public interface DroneRepository {
     Drone findById(Long id);
 
 
-
-
-
-
 }
