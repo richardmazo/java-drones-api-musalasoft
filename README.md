@@ -106,7 +106,7 @@ The exposed port of the localhost is 8082
 5. Check drone baterry level for a given drone: http://localhost:8082/api/droneBattery?idDrone=100
    ![img_3.png](img_3.png)
 
-# Additional services:
+## Additional services:
 
 1. Get all drones: http://localhost:8082/api/getDrones
    ![img.png](img.png)
@@ -114,7 +114,23 @@ The exposed port of the localhost is 8082
 2. Get all medications: http://localhost:8082/api/getMedications
    ![img_2.png](img_2.png)
 
+# Database:
 
+To enter the H2 database the project must be running locally. Then access the following link:
+
+http://localhost:8082/h2
+
+User: sa
+
+Password: password
+
+### Available tables:
+
+- TBL_DRONE: Table with all the drones.
+
+- TBL_MEDICATION: Table with all medications.
+
+- TBL_DRONE_AUDIT: Audit table that saves the battery reviews that are done to the drones (This process is executed every three minutes automatically while the application is running locally).
 
 
 
