@@ -122,7 +122,7 @@ http://localhost:8082/h2
 
 User: sa
 
-Password: password
+Password: pass
 
 ### Available tables:
 
